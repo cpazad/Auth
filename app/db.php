@@ -9,7 +9,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = 'studentdb';
+$db = 'auth61';
 
 
 
