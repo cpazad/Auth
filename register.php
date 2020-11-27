@@ -25,11 +25,35 @@ require_once "app/autoload.php";
 		$uname = $_POST['uname'];
 		$pass = $_POST['pass'];
 		$cpass = $_POST['cpass'];
-		//Check box functionality set
+		
+		//Check box functionality set (agreement check)
 		$status = 'disagree';
 		if(isset($_POST['status'])) {
 		$status = $_POST['status'];
 		}
+
+		// email already exist checker
+
+		$email_checker = valueCheck('users','email', $email);
+
+		// $sql  = "SELECT email FROM users WHERE email='$email'";
+		// $data = $connection -> query($sql);
+		// $email_checker= $data -> num_rows; 
+
+		// Username already exist checker
+		$uname_checker = valueCheck('users','uname', $uname);
+
+		// $sql  = "SELECT uname FROM users WHERE uname='$uname'";
+		// $data = $connection -> query($sql);
+		// $uname_checker= $data -> num_rows; 
+
+		// Cell number already exist checker
+		$cell_checker = valueCheck('users','cell', $cell);
+
+		// $sql  = "SELECT cell FROM users WHERE cell='$cell'";
+		// $data = $connection -> query($sql);
+		// $cell_checker= $data -> num_rows; 
+
 
 
 		// Password conversion to salt
@@ -47,9 +71,20 @@ require_once "app/autoload.php";
 			$mess = validationMsg ("Password do not match");
 		}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) ){
 			$mess = validationMsg ("Invalid Email Address");
+		}elseif($email_checker > 0 ){
+
+			$mess = validationMsg ("Email Already Exist");
+
+		}elseif($uname_checker > 0 ){
+
+			$mess = validationMsg ("User Name Already Exist");
+
+		}elseif($cell_checker > 0 ){
+
+			$mess = validationMsg ("Cell Number Already Exist");
+
 		}else{
-			$sql = "INSERT INTO users (name, email, cell, uname, pass,status) VALUES('$name','$email','$cell','$uname','$hass_pass', '$status')";
-			$connection -> query($sql);
+			insert( "INSERT INTO users (name, email, cell, uname, pass,status) VALUES('$name','$email','$cell','$uname','$hass_pass', '$status')");
 			$mess = validationMsg ('Registration Successful', 'success');
 			}
 	}
