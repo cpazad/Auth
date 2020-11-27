@@ -48,7 +48,7 @@ require_once "app/autoload.php";
 		}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) ){
 			$mess = validationMsg ("Invalid Email Address");
 		}else{
-			$sql = "INSERT INTO users (name, email, cell, uname, pass, photo, status) VALUES('$name','$email','$cell','$uname','$hass_pass', '$status')";
+			$sql = "INSERT INTO users (name, email, cell, uname, pass,status) VALUES('$name','$email','$cell','$uname','$hass_pass', '$status')";
 			$connection -> query($sql);
 			$mess = validationMsg ('Registration Successful', 'success');
 			}
