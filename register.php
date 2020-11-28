@@ -92,7 +92,7 @@ require_once "app/autoload.php";
 		}else{
 			insert( "INSERT INTO users (name, email, cell, uname, pass, photo ,status) VALUES('$name','$email','$cell','$uname','$hass_pass','$unique_file_name', '$status')");
 			//photo file upload
-			move_uploaded_file($unique_file_name,  'media/img/' . $unique_file_name);
+			move_uploaded_file($file_tmp_name,  'assets/media/img/' . $unique_file_name);
 
 			//Final Sucessful form submission message
 			$mess = validationMsg ('Registration Successful', 'success');
