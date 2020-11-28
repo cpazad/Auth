@@ -54,6 +54,12 @@ require_once "app/autoload.php";
 		// $data = $connection -> query($sql);
 		// $cell_checker= $data -> num_rows; 
 
+		// Photo file data collection with a unique name
+
+		 $file_name = $_FILES['photo']['name'];
+         $file_tmp_name = $_FILES['photo']['tmp_name'];
+         $unique_file_name = md5(time() . rand()) . $file_name;
+
 
 
 		// Password conversion to salt
@@ -84,7 +90,11 @@ require_once "app/autoload.php";
 			$mess = validationMsg ("Cell Number Already Exist");
 
 		}else{
-			insert( "INSERT INTO users (name, email, cell, uname, pass,status) VALUES('$name','$email','$cell','$uname','$hass_pass', '$status')");
+			insert( "INSERT INTO users (name, email, cell, uname, pass, photo ,status) VALUES('$name','$email','$cell','$uname','$hass_pass','$unique_file_name', '$status')");
+			//photo file upload
+			move_uploaded_file($unique_file_name,  'media/img/' . $unique_file_name);
+
+			//Final Sucessful form submission message
 			$mess = validationMsg ('Registration Successful', 'success');
 			}
 	}
