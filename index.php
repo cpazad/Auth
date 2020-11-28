@@ -1,8 +1,12 @@
+<?php
+require_once "app/autoload.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Authentication Test</title>
+	<title>Log in here</title>
 	<!-- ALL CSS FILES  -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -10,25 +14,69 @@
 </head>
 <body>
 	
+	<?php
+	
+	// Getting the form data
+	if(isset($_POST['submit'])){
+		$login = $_POST['login'];
+		$password = $_POST['password'];
+	} 
+	// empty field check
+	if(empty ($login) || empty ($password) ){
+		$mess = validationMsg ("All fields are required");
+	}else{
+		$sql = "SELECT * FROM users WHERE email ='$login' or uname ='$login'";
+		$login_Data = $connection -> query($sql);
+		$login_num = $login_Data -> num_rows;
+		$login_user = $login_Data -> fetch_assoc();
+
+		if($login_num == 1){
+			if(password_verify($password, $login_user['pass'])){
+				$_SESSION['name'] = $login_user['name'];
+				$_SESSION['email'] = $login_user['email'];
+				$_SESSION['cell'] = $login_user['cell'];
+				$_SESSION['uname'] = $login_user['uname'];
+				$_SESSION['photo'] = $login_user['photo'];
+				
+				
+				
+				
+				
+				
+				
+				header('location: profile.php');
+			}else{
+				$mess = validationMsg ("Wrong Password");
+			}
+		}else{
+			$mess = validationMsg ("Wrong User Name or email address");
+		}
+	}
+
+	
+	?>
 	
 
 	<div class="wrap shadow">
 		<div class="card">
 			<div class="card-body">
 				<h2>Log In Here</h2>
-				<form action="">
+				<?php 
+				include "template/messeage.php";
+				?>
+				<form action="" method="POST">
 					
 					<div class="form-group">
 						<label for="">Username/Email</label>
-						<input class="form-control" type="text">
+						<input name="login" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>
-						<input class="form-control" type="password">
+						<input name="password" class="form-control" type="password">
 					</div>
 					
 					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="submit" class="btn btn-primary" type="submit" value="Sign Up">
 					</div>
 				</form>
 			</div>

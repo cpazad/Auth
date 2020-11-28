@@ -96,6 +96,7 @@ require_once "app/autoload.php";
 
 			//Final Sucessful form submission message
 			$mess = validationMsg ('Registration Successful', 'success');
+			header('location: index.php');
 			}
 	}
 	
