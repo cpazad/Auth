@@ -2,6 +2,12 @@
 require_once "app/autoload.php";
 ?>
 
+<?php
+if(isset($_SESSION['name'])){
+	header('location: profile.php');
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +82,7 @@ require_once "app/autoload.php";
 					</div>
 					
 					<div class="form-group">
-						<input name="submit" class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="submit" class="btn btn-primary" type="submit" value="Log In">
 					</div>
 				</form>
 			</div>

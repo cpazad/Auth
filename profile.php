@@ -2,6 +2,20 @@
 include_once "app/autoload.php";
 ?>
 
+<?php
+// Logout redirect setting
+
+if(isset($_GET['logout']) AND $_GET['logout'] =='ok'){
+	session_destroy();
+	header('location:index.php');
+}
+
+if(!isset($_SESSION['name'])){
+ header('location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +63,7 @@ include_once "app/autoload.php";
 					</tr>
 					
 				</table>
-				<a class="btn btn-secondary btn-sm" href="">Log Out</a>
+				<a class="btn btn-secondary btn-sm" href="?logout=ok">Log Out</a>
 			</div>
 		</div>
 	</div>
