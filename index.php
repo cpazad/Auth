@@ -68,7 +68,7 @@ if(isset($_SESSION['name'])){
 			<div class="card-body">
 				<h2>Log In Here</h2>
 				<?php 
-				include "template/messeage.php";
+					include "template/messeage.php";
 				?>
 				<form action="" method="POST">
 					
