@@ -20,19 +20,16 @@ WE are going to use a bucnh of functions and methods to create authentication pr
 
 <p>Index.php or login page:</p>
 
-    <ol>
-    <li> Basic form with 2 input fields and a submit button
-        <ul>
-        <li>Username/Email - User can login with username or email both </li>
-        <li>Password </li>
-        </ul>
-    </li>
-    <li> Existing Username/Email/Password will be checked with that of database</li>
-    <li>If ok than redirect to profile page</li>
-    <li>If No username or email available than asked to create a new account</li>
-    <li>A "create an account" will redirect to register/create new account page</li>
-    <li>Login users will not be able to see the login page</li>
-    </ol> 
+    1. Basic form with 2 input fields and a submit button. 
+        1.Username/Email - User can login with username or email both.
+        2.Password  
+
+    2. Existing Username/Email/Password will be checked with that of database.
+    3. If ok than redirect to profile page.
+    4. If No username or email available than asked to create a new account.
+    5. A "create an account" will redirect to register/create new account page.
+    6. Login users will not be able to see the login page  
+    
  
 
 	How to: 	
