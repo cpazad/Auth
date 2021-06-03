@@ -1,32 +1,39 @@
-# Auth
-PHP Authentication Project
+## Auth
+#### PHP Authentication Project
 
 WE are going to use a bucnh of functions and methods to create authentication process
 
 
 
 
-#### This is a smalll project about authentication process by PHP (Basic), with session and cookie:
+##### This is a smalll project about authentication process by PHP (Basic), with session and cookie:
 
- ##### pages: 
+ ##### Pages of this project: 
 	1. Index.php or login page.<br>
 	2. Register page.<br>
 	3. Profile page.<br>
 	4. All Users page. (Display all user)<br>
     5. Edit page. (For edit form information)<br>
 
-<span><strong>Note:</strong><em> Bootstrap is used to create these pages</em></span>
-----
+<em><>Note:Bootstrap is used to create these pages</em>
+--------
 
-Index.php or login page:
-	1. Basic form with 2 input fields and a submit button
-		1. Username/Email - User can login with username or email both
-		2. Password 
-	2. Existing Username/Email/Password will be checked with that of database
-	3. If ok than redirect to profile page
-	4. If No username or email available than asked to create a new account
-	5. A "create an account" will redirect to register/create new account page
-	6. Login users will not be able to see the login page
+<p>Index.php or login page:</p>
+
+    <ol>
+    <li> Basic form with 2 input fields and a submit button
+        <ul>
+        <li>Username/Email - User can login with username or email both </li>
+        <li>Password </li>
+        </ul>
+    </li>
+    <li> Existing Username/Email/Password will be checked with that of database</li>
+    <li>If ok than redirect to profile page</li>
+    <li>If No username or email available than asked to create a new account</li>
+    <li>A "create an account" will redirect to register/create new account page</li>
+    <li>Login users will not be able to see the login page</li>
+    </ol> 
+ 
 
 	How to: 	
 	1. Logged in users will not able enter/view this page
