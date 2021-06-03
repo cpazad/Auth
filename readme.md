@@ -8,17 +8,17 @@ WE are going to use a bucnh of functions and methods to create authentication pr
 
 ##### This is a smalll project about authentication process by PHP (Basic), with session and cookie:
 
- ##### Pages of this project: 
+**Pages of this project:** 
 	1. Index.php or login page.<br>
 	2. Register page.<br>
 	3. Profile page.<br>
 	4. All Users page. (Display all user)<br>
     5. Edit page. (For edit form information)<br>
 
-<em><>Note:Bootstrap is used to create these pages</em>
+ *Note:Bootstrap is used to create these pages*
 --------
 
-<p>Index.php or login page:</p>
+**Index.php or login page:**
 
     1. Basic form with 2 input fields and a submit button. 
         1.Username/Email - User can login with username or email both.
@@ -34,18 +34,18 @@ WE are going to use a bucnh of functions and methods to create authentication pr
 
 	How to: 	
 	1. Logged in users will not able enter/view this page
- 	<?php
+ 	`<?php
 	if(isset($_SESSION['name'])){
 	header('location: profile.php');
 	   }
-	?>
+	?>`
 	2. get user name/email information information via POST method
 	3. Get data from the database based on user name
 	4. Check user data with num_rows property (num_rows property check frequency of data available on database)
 	5. if username or email available, user info sent to session  and redirect to profile page.  or else send a validation message	
 	
 
-Register Now page:
+**Register Now page:**
 	1. Basic form with 8 input fields and a submit button (To collection user data and send to user table) and login button (redirect to login page/index) for 	existing user.
 	2. Basic validations
 		a. all fields are required
@@ -65,12 +65,12 @@ How to:
 	2. Receive data by $_POST() function
 	3. Check 'I agree' by following method
 
-	$status = 'disagree';
+	`$status = 'disagree';
 		
 		if(isset($_POST['status'])) {
 		$status = $_POST['status'];
 		}
-	if $status = 'disagree' -  a warning will be sent
+	if $status = 'disagree' -  a warning will be sent`
 
 	4. photo information will be receive via $_FILE() function
 	5. Passord will be encripted by following method (salt)
@@ -82,13 +82,13 @@ How to:
 			$mess = validationMsg ("Password do not match", "danger");
 	9. Existing  Username/Email/Password will be check with num_rows property
 
-value check function:
-function valueCheck($table, $column, $val){
+*value check function:*
+`function valueCheck($table, $column, $val){
         global $connection;
         $sql  = "SELECT $column FROM $table WHERE $column ='$val'";
 		$data = $connection -> query($sql);
 		return $data -> num_rows; 
-}
+}`
 
 
 
