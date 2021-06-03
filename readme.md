@@ -12,7 +12,8 @@
 5. Edit page. (For edit form information)<br>
 
  *Note:Bootstrap is used to create these pages*
---------
+
+ ----
 
 **Index.php or login page:**
 
@@ -28,7 +29,7 @@
     
  
 
-	**How to:** 	
+	*How to:* 	
 1. Logged in users will not able enter/view this page
 
  	`<?php
@@ -56,7 +57,7 @@
 	b. username already exist <br>
 	c. Cell number already exist <br>
 
-**How to:** 
+*How to:* 
 1. Collecting form data
 	1. all input field must be inside form tag
 	2. use POST method to get the data
@@ -96,7 +97,8 @@
 	10. After successful check and validation of information, user will be sent to login page
 
 *End of Register page*
---------------------
+
+----
 
 **Profile Page:** 
 Features: information changed/loaded dynamically
