@@ -53,12 +53,18 @@ require_once "app/autoload.php";
 							<td><?php echo $users['cell'];?></td>
 							<td><img src="assets/media/img/<?php echo $users['photo'];?>" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								
+
+								<?php if ($users['id'] == $_SESSION['user_id']) : ?>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
 								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+								<?php else: ?>
+									<a class="btn btn-sm btn-info" href="#">View</a>
+
+								<?php endif; ?>
 							</td>
 						</tr>
-						 <?php endwhile;?>
+						 <?php endwhile; ?>
 						
 
 					</tbody>

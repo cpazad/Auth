@@ -1,11 +1,7 @@
 <?php
 
 if(isset($mess)) {
-echo $mess;
+    echo $mess;
 }
-
-
-
-
 
 ?>

@@ -24,7 +24,7 @@ if(isset($_SESSION['name'])){
 	
 	// Getting the form data
 	if(isset($_POST['submit'])){
-		$login = $_POST['login'];
+		$login = $_POST['user'];
 		$password = $_POST['password'];
 	} 
 	// empty field check
@@ -32,23 +32,19 @@ if(isset($_SESSION['name'])){
 		$mess = validationMsg ("All fields are required");
 	}else{
 		$sql = "SELECT * FROM users WHERE email ='$login' or uname ='$login'";
-		$login_Data = $connection -> query($sql);
-		$login_num = $login_Data -> num_rows;
-		$login_user = $login_Data -> fetch_assoc();
+			$login_Data = $connection -> query($sql);
+			$login_num = $login_Data -> num_rows;
+			$login_user = $login_Data -> fetch_assoc();
 
 		if($login_num == 1){
 			if(password_verify($password, $login_user['pass'])){
+				$_SESSION['user_id'] = $login_user['id'];
 				$_SESSION['name'] = $login_user['name'];
 				$_SESSION['email'] = $login_user['email'];
 				$_SESSION['cell'] = $login_user['cell'];
 				$_SESSION['uname'] = $login_user['uname'];
 				$_SESSION['photo'] = $login_user['photo'];
-				
-				
-				
-				
-				
-				
+			
 				
 				header('location: profile.php');
 			}else{
@@ -74,7 +70,7 @@ if(isset($_SESSION['name'])){
 					
 					<div class="form-group">
 						<label for="">Username/Email</label>
-						<input name="login" class="form-control" type="text">
+						<input name="user" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>

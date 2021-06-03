@@ -7,7 +7,7 @@ require_once "app/autoload.php";
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Register</title>
+	<title>Register/create Account</title>
 	<!-- ALL CSS FILES  -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -15,10 +15,13 @@ require_once "app/autoload.php";
 </head>
 <body>
 	<?php
-	// get the data from the registration form
+	
+		// get the data from the registration form
 
-	if(isset($_POST['social'])){
+	if(isset($_POST['add'])){
+		
 		//get data from the following input field
+
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$cell = $_POST['cell'];
@@ -28,6 +31,7 @@ require_once "app/autoload.php";
 		
 		//Check box functionality set (agreement check)
 		$status = 'disagree';
+		
 		if(isset($_POST['status'])) {
 		$status = $_POST['status'];
 		}
@@ -36,23 +40,12 @@ require_once "app/autoload.php";
 
 		$email_checker = valueCheck('users','email', $email);
 
-		// $sql  = "SELECT email FROM users WHERE email='$email'";
-		// $data = $connection -> query($sql);
-		// $email_checker= $data -> num_rows; 
-
 		// Username already exist checker
 		$uname_checker = valueCheck('users','uname', $uname);
-
-		// $sql  = "SELECT uname FROM users WHERE uname='$uname'";
-		// $data = $connection -> query($sql);
-		// $uname_checker= $data -> num_rows; 
 
 		// Cell number already exist checker
 		$cell_checker = valueCheck('users','cell', $cell);
 
-		// $sql  = "SELECT cell FROM users WHERE cell='$cell'";
-		// $data = $connection -> query($sql);
-		// $cell_checker= $data -> num_rows; 
 
 		// Photo file data collection with a unique name
 
@@ -72,22 +65,22 @@ require_once "app/autoload.php";
 			$mess = validationMsg ("All field must be complete");
 		
 		}elseif($status == 'disagree'){
-			$mess = validationMsg ("You should agree first");
-		}elseif($cpass !==$pass){
-			$mess = validationMsg ("Password do not match");
+			$mess = validationMsg ("You should agree first", "warning");
+		}elseif($cpass !== $pass){
+			$mess = validationMsg ("Password do not match", "danger");
 		}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) ){
-			$mess = validationMsg ("Invalid Email Address");
+			$mess = validationMsg ("Invalid Email Address", "warning");
 		}elseif($email_checker > 0 ){
 
-			$mess = validationMsg ("Email Already Exist");
+			$mess = validationMsg ("Email Already Exist", "wanring");
 
 		}elseif($uname_checker > 0 ){
 
-			$mess = validationMsg ("User Name Already Exist");
+			$mess = validationMsg ("User Name Already Exist", "warning");
 
 		}elseif($cell_checker > 0 ){
 
-			$mess = validationMsg ("Cell Number Already Exist");
+			$mess = validationMsg ("Cell Number Already Exist", "warning");
 
 		}else{
 			insert( "INSERT INTO users (name, email, cell, uname, pass, photo ,status) VALUES('$name','$email','$cell','$uname','$hass_pass','$unique_file_name', '$status')");
@@ -103,6 +96,8 @@ require_once "app/autoload.php";
 
 	
 	?>
+
+<!--  End of Main PHP coding -->
 
 	<div class="wrap shadow">
 		<div class="card">
@@ -143,10 +138,10 @@ require_once "app/autoload.php";
 						<input name="photo" class="form-control-file" type="file">
 					</div>
 					<div class="form-group">
-						<input name="status" value="Disagree" class="p-1"  type="checkbox" id="agree"><label for="agree">  I agree to go</label>
+						<input name="status" value="agree" class="p-1"  type="checkbox" id="agree"><label for="agree">__I agree to go</label>
 					</div>
 					<div class="form-group">
-						<input name="social" class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="add" class="btn btn-primary" type="submit" value="Sign Up">
 					</div>
 				</form>
 			</div>
