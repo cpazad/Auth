@@ -6,14 +6,14 @@ WE are going to use a bucnh of functions and methods to create authentication pr
 
 
 
-This is a smalll project about authentication process by PHP (Basic), with session and cookie:
+#### This is a smalll project about authentication process by PHP (Basic), with session and cookie:
 
- pages: 
-	1. Index.php or login page.
-	2. Register page.
-	3. Profile page.
-	4. All Users page. (Display all user)
-    5. Edit page. (For edit form information)
+ ##### pages: 
+	1. Index.php or login page.<br>
+	2. Register page.<br>
+	3. Profile page.<br>
+	4. All Users page. (Display all user)<br>
+    5. Edit page. (For edit form information)<br>
 
 <span><strong>Note:</strong><em> Bootstrap is used to create these pages</em></span>
 ----
